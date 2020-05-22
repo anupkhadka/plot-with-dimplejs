@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">  
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js"></script>
+  
+  <script type="text/javascript">
+  function draw(data) 
+  {
+    /* D3.js setup code */
+    
+    "use strict";
+    var linesvg = d3.select("body").append("svg")
+                         .attr("width", 600)
+                         .attr("height", 180);
+    var bubblesvg = d3.select("body").append("svg")
+                         .attr("width", 600)
+                         .attr("height", 180);
+    var barsvg = d3.select("body").append("svg")
+                         .attr("width", 600)
+                         .attr("height", 180);
+
+    /* Code to construct chart in dimple.js */
+    let lineChart = new dimple.chart(linesvg,data);
+    lineChart.addTimeAxis("x", "Date", "%Y-%m-%d", "%m/%Y");
+    lineChart.addMeasureAxis("y", "Close");
+    lineChart.addSeries(null, dimple.plot.line);
+    lineChart.draw();
+    
+    let bubbleChart = new dimple.chart(bubblesvg,data);
+    bubbleChart.addTimeAxis("x", "Date", "%Y-%m-%d", "%m/%Y");
+    bubbleChart.addMeasureAxis("y", "Close");
+    bubbleChart.addSeries(null, dimple.plot.bubble);
+    bubbleChart.draw();
+    
+    let barChart = new dimple.chart(barsvg,data);
+    barChart.addTimeAxis("x", "Date", "%Y-%m-%d", "%m/%Y");
+    barChart.addMeasureAxis("y", "Close");
+    barChart.addSeries(null, dimple.plot.bar);
+    barChart.draw();
+  };    
+  </script>
+</head>
+
+<body>
+  <script type="text/javascript">
+    /* load csv file in d3 */
+    d3.csv("data.csv", draw);
+  </script>
+</body>
+
+</html>
