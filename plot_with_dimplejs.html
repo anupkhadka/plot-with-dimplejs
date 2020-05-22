@@ -12,32 +12,32 @@
     /* D3.js setup code */
     
     "use strict";
-    var linesvg = d3.select("body").append("svg")
-                         .attr("width", 600)
+    let linesvg = d3.select("body").append("svg")
+                         .attr("width", 800)
                          .attr("height", 180);
-    var bubblesvg = d3.select("body").append("svg")
-                         .attr("width", 600)
+    let bubblesvg = d3.select("body").append("svg")
+                         .attr("width", 800)
                          .attr("height", 180);
-    var barsvg = d3.select("body").append("svg")
-                         .attr("width", 600)
+    let barsvg = d3.select("body").append("svg")
+                         .attr("width", 800)
                          .attr("height", 180);
 
     /* Code to construct chart in dimple.js */
     let lineChart = new dimple.chart(linesvg,data);
-    lineChart.addTimeAxis("x", "Date", "%Y-%m-%d", "%m/%Y");
-    lineChart.addMeasureAxis("y", "Close");
+    lineChart.addCategoryAxis("x", "Country",);
+    lineChart.addMeasureAxis("y", "Average Male Height(cm)");
     lineChart.addSeries(null, dimple.plot.line);
     lineChart.draw();
     
     let bubbleChart = new dimple.chart(bubblesvg,data);
-    bubbleChart.addTimeAxis("x", "Date", "%Y-%m-%d", "%m/%Y");
-    bubbleChart.addMeasureAxis("y", "Close");
+    bubbleChart.addCategoryAxis("x", "Country",);
+    bubbleChart.addMeasureAxis("y", "Average Male Height(cm)");
     bubbleChart.addSeries(null, dimple.plot.bubble);
     bubbleChart.draw();
     
     let barChart = new dimple.chart(barsvg,data);
-    barChart.addTimeAxis("x", "Date", "%Y-%m-%d", "%m/%Y");
-    barChart.addMeasureAxis("y", "Close");
+    barChart.addCategoryAxis("x", "Country",);
+    barChart.addMeasureAxis("y", "Average Male Height(cm)");
     barChart.addSeries(null, dimple.plot.bar);
     barChart.draw();
   };    
